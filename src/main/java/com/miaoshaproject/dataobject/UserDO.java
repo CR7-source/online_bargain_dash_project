@@ -1,5 +1,5 @@
 package com.miaoshaproject.dataobject;
-
+//数据实体的对象
 public class UserDO {
     /**
      *

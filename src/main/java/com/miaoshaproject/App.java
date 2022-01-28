@@ -21,17 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 @MapperScan("com.miaoshaproject.dao")
 public class App 
 {
-    @Autowired
-    UserDOMapper userDOMapper;
+
     @RequestMapping("/")
     public String home(){
         return "hello";
     }
-    @RequestMapping("/user/{id}")
-    public String getUser(@PathVariable int id){
-        userDOMapper.selectByPrimaryKey(id);
-        return userDOMapper.selectByPrimaryKey(id).toString();
-    }
+
     public static void main( String[] args )
     {
         SpringApplication.run(App.class,args);
