@@ -17,4 +17,6 @@ public class UserModel {
     private String regisitMode;
     private Integer thirdPartyId;
     private String encrptPassword;
+
+
 }

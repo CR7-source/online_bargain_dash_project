@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication(scanBasePackages = {"com.miaoshaproject"})
 @RestController
 @MapperScan("com.miaoshaproject.dao")
-public class App 
+//@EnableAutoConfiguration
+public class App
 {
 
     @RequestMapping("/")
