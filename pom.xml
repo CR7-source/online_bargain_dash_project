@@ -85,9 +85,13 @@
       <artifactId>commons-lang3</artifactId>
       <version>3.7</version>
     </dependency>
-
-
-
+    <!-- 参数校验   -->
+    <!--校验-->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>5.2.4.Final</version>
+    </dependency>
 
   </dependencies>
 
