@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * @Date: 2022/02/05/ 16:16
  * @Description
  */
-@Controller("/item")
+@Controller
 @RequestMapping("/item")
 //跨域请求中，不能做到session共享
 @CrossOrigin(origins = {"*"}, allowCredentials = "true")

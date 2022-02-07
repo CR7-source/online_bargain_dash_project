@@ -14,15 +14,6 @@ import java.math.BigDecimal;
 public class ItemModel {
     private Integer id;
 
-
-
-
-
-
-
-
-
-
     //商品名称
     @NotBlank(message = "商品名称不能为空")
     private String title;
