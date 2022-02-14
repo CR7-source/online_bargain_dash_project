@@ -10,20 +10,27 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
-@RunWith(SpringRunner.class)
-@SpringBootTest
+/*@RunWith(SpringRunner.class)
+@SpringBootTest*/
 public class PromoServiceImplTest{
     @Autowired
     PromoService promoService;
+    public class TreeNode {
+      int val;
+      TreeNode left;
+      TreeNode right;
+      TreeNode(int x) { val = x; }
+  }
     @Test
     public void test(){
-        System.out.println("hello");
-        PromoModel promoByItemId = promoService.getPromoByItemId(3);
-        System.out.println("hello2");
+        
+        System.out.println(Math.pow(2,3));
+        return ;
 
-        if(promoByItemId!=null)
-            System.out.println(promoByItemId.toString());
     }
+
 
 }

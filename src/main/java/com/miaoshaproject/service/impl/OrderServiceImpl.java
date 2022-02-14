@@ -75,6 +75,7 @@ public class OrderServiceImpl implements OrderService {
         orderModel.setUserId(userId);
         orderModel.setItemId(itemId);
         orderModel.setAmount(amount);
+        //是否是促销
         if (promoId != null) {
             orderModel.setItemPrice(itemModel.getPromoModel().getPromoItemPrice());
         } else {
