@@ -1,3 +1,3 @@
-var g_host="miaoshaserver:9999"
-
+//var g_host="localhost:9998"
+var g_host="miaoshaserver"
 
