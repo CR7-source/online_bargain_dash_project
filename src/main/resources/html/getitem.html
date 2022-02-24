@@ -93,9 +93,14 @@
             }
         });
         $("#createOrder").on("click", function() {
+            var token =window.localStorage["token"];
+            if(token==null){
+                alert("没有登陆，不能下单");
+                window.location.href="login.html";
+            }
             $.ajax({
                 type: "POST",
-                url: "http://"+g_host+"/order/createorder",
+                url: "http://"+g_host+"/order/createorder?token="+token,
                 contentType: "application/x-www-form-urlencoded",
                 data: {
                     "itemId": g_itemVO.id,
@@ -114,6 +119,7 @@
                         if (data.data.errCode == 20003) {
                             window.location.href="login.html";
                         }
+                        window.location.href="login.html";
                     }
                 },
                 error: function(data) {

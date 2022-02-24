@@ -14,6 +14,7 @@ import org.apache.tomcat.util.security.MD5Encoder;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -27,12 +28,17 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+
 @Slf4j
 @Controller
 @RequestMapping("user")
 public class UserController extends BaseController{
     @Autowired
     private UserService userService;
+    @Autowired
+    private RedisTemplate redisTemplate;
     @Autowired
     private HttpServletRequest httpServletRequest;//prototype,可以多线程处理
     //用户登录接口
@@ -48,12 +54,17 @@ public class UserController extends BaseController{
         //用户登录服务，用来校验用户登录是否合法
         //用户加密后的密码
         UserModel userModel = userService.validateLogin(telphone, EncodeByMD5(password));
-
+        //生成登陆凭证token UUID
+        String uuidToken = UUID.randomUUID().toString();
+        uuidToken=uuidToken.replace("-","");
+        //建立token和用户态的关系
+        redisTemplate.opsForValue().set(uuidToken,userModel);
+        redisTemplate.expire(uuidToken,1, TimeUnit.HOURS);
         //将登陆凭证加入到用户登录成功的session内
-        this.httpServletRequest.getSession().setAttribute("IS_LOGIN", true);
-        this.httpServletRequest.getSession().setAttribute("LOGIN_USER", userModel);
+     /*   this.httpServletRequest.getSession().setAttribute("IS_LOGIN", true);
+        this.httpServletRequest.getSession().setAttribute("LOGIN_USER", userModel);*/
 
-        return CommonReturnType.create(null);
+        return CommonReturnType.create(uuidToken);
 
     }
 
