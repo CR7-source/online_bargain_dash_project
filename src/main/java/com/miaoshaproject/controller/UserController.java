@@ -123,7 +123,7 @@ public class UserController extends BaseController{
     @ResponseBody
     public CommonReturnType getUser(@RequestParam(name="id") Integer id) throws BusinessException {
         //调用service层服务获取对应id的对象并返回给前端
-        UserModel userModel = userService.getUserById(id);
+        UserModel userModel = userService.getUserByIDInCache(id);
         //若获取的用户信息不存在
         if(userModel==null) throw new BusinessException(EmBusinessError.USER_NOT_EXIST);
         UserVO userVO = convertFromUserModel(userModel);
