@@ -21,12 +21,12 @@
 2. 分布式拓展
 
 **各层对象模型：**
-![img_2.png](img_2.png)
+
 - controller：ViewObject(返回前端的对象)
 - service:ViewModel
 - DAO:DataObject
 整体框架：
-  ![img_1.png](img_1.png)
+ 
 
 ##运行设置：
 更改本地的host文件， 添加nginx反向代理服务器 公网ip映射为miaoshaserver
@@ -35,7 +35,7 @@ ip miaoshaserver
 1. 安装openresty
 2. 进入 cd /usr/local/openresty/nginx/，将html等静态资源部署在/html/resource路径下
 3. 配置nginx.conf
-4. 配置lua脚本
+4. 配置lua 脚本
 ### rocketMQ配置
 ![img_4.png](img_4.png)
 1. 修改mqnamesrv.sh mqbroker.sh mqadmin.xml内的jvm空间
@@ -61,11 +61,4 @@ grant all privileges on *.* to root@'%' identified by 'root'
 flush privileges
 ```
 
-## 数据库设计
-需求设计:
-1. 先根据需求设计一个数据模型Model,包含所需求需要的字段
-2. 设计数据库
-## 优化思路
-1. 修改springboot tomcat默认配置属性
-   ![img_3.png](img_3.png)
-2. 定制化tomcat
+
